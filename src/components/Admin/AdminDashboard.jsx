@@ -18,7 +18,7 @@ const AdminDashboard = () => {
     {
       title: 'User Account Mapping',
       description: 'Map user accounts with their advertisment accounts.',
-      url: '/user-account-mapping',
+      url: '/admin/user-account-mapping',
     },
   ];
 

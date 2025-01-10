@@ -1,7 +1,7 @@
 // UserPage.js
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getAuthToken, isTokenValid, getRoleFromToken } from '../utils/auth';
+import { getAuthToken, isTokenValid, getRoleFromToken } from '../../utils/auth';
 
 
 const UserPage = () => {

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAuthToken, isTokenValid, getRoleFromToken } from '../../utils/auth';
 import AdminNavbar from './AdminNavbar';
-import Footer from '../Footer';
+import Footer from '../Public/Footer';
+
 import AdminDashboard from './AdminDashboard';
 
 const AdminPage = () => {
@@ -40,8 +41,7 @@ const AdminPage = () => {
         <AdminDashboard />
       </div>
 
-
-      <Footer />
+<Footer/>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-const UserManagementTabs = ({ activeTab, onTabChange }) => {
+const UserAccountManagementTabs = ({ activeTab, onTabChange }) => {
   return (
     <div className="tabs flex justify-evenly mb-6 w-full max-w-4xl mx-auto">
       <button
@@ -10,7 +10,7 @@ const UserManagementTabs = ({ activeTab, onTabChange }) => {
             : 'border-gray-500 text-gray-400'
         } hover:shadow-[0_0_15px_#ffffff] transition duration-300`}
       >
-        Create User
+        Map Account
       </button>
       <button
         onClick={() => onTabChange('modify')}
@@ -20,7 +20,7 @@ const UserManagementTabs = ({ activeTab, onTabChange }) => {
             : 'border-gray-500 text-gray-400'
         } hover:shadow-[0_0_15px_#ffffff] transition duration-300`}
       >
-        Modify User
+        Modify Mapping
       </button>
       <button
         onClick={() => onTabChange('display')}
@@ -30,12 +30,12 @@ const UserManagementTabs = ({ activeTab, onTabChange }) => {
             : 'border-gray-500 text-gray-400'
         } hover:shadow-[0_0_15px_#ffffff] transition duration-300`}
       >
-        Display User
+        Display Mapping
       </button>
       
     </div>
   );
 };
 
-export default UserManagementTabs;
+export default UserAccountManagementTabs;
 
