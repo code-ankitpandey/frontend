@@ -20,7 +20,6 @@ const ResetPassword = () => {
   
   const handleResetPassword = async (e) => {
     e.preventDefault();
-    showLoader();
     if (password !== confirmPassword) {
       setError("Passwords don't match.");
       return;

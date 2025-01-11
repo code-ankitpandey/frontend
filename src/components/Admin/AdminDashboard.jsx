@@ -8,7 +8,7 @@ const AdminDashboard = () => {
     {
       title: 'Payment Management',
       description: 'Manage all payment transactions and related details.',
-      url: '/payment-management',
+      url: '/admin/payment-management',
     },
     {
       title: 'User Management',

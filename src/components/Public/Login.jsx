@@ -27,9 +27,9 @@ const Login = () => {
         const userRole = tokenPayload.role;
         
         if (userRole === 'ADMIN') {
-          navigate('/admin');
+          navigate('/adminhomepage');
         } else if (userRole === 'USER') {
-          navigate('/user');
+          navigate('/homepage');
         } else {
           setError('Invalid role');
         }

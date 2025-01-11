@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useLoader } from '../utils/LoaderContext';
-const  baseURL = 'http://192.168.1.14:8000';
+const  baseURL = 'http://192.168.1.9:8000';
 
 const apiClient = axios.create({
   baseURL: baseURL,
