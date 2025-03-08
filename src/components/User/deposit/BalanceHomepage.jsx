@@ -1,14 +1,25 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import Navbar from "../Navbar";
 import Footer from "../../Public/Footer";
 import AddMoney from "../deposit/AddMoney";
 import DepositTransactions from "./DepositTransactions";
+import UpdateBalance from "../deposit/UpdateBalance";
+import TransactionPage from '../TransactionPage';
 
 const BalanceHomepage = () => {
-  const [activeTab, setActiveTab] = useState("Deposit");
-  const [subTab, setSubTab] = useState("AddMoney");
+  const { state } = useLocation(); // Get the state passed from BalanceTile
 
-  const balance = 5000; // Example balance; replace with dynamic data
+  // Check if state is defined and destructure it, otherwise set default values
+  const { balance = 0, user = {}, accounts = [] } = state || {};
+
+  // Check if user is undefined or has missing fields
+  if (!user.firstName) {
+    console.error('User data is missing or incomplete:', user);
+  }
+
+  const [activeTab, setActiveTab] = useState("Deposit");
+  const [subTab, setSubTab] = useState("AddMoney"); 
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -28,11 +39,10 @@ const BalanceHomepage = () => {
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`tab py-2 px-4 rounded-lg border-2 ${
-              activeTab === tab
+            className={`tab py-2 px-4 rounded-lg border-2 ${activeTab === tab
                 ? "border-white text-white shadow-[0_0_10px_#ffffff]"
                 : "border-gray-500 text-gray-400"
-            } hover:shadow-[0_0_15px_#ffffff] transition duration-300`}
+              } hover:shadow-[0_0_15px_#ffffff] transition duration-300`}
           >
             {tab}
           </button>
@@ -49,11 +59,10 @@ const BalanceHomepage = () => {
                 <button
                   key={sub}
                   onClick={() => setSubTab(sub)}
-                  className={`tab py-2 px-4 rounded-lg border-2 ${
-                    subTab === sub
+                  className={`tab py-2 px-4 rounded-lg border-2 ${subTab === sub
                       ? "border-white text-white shadow-[0_0_10px_#ffffff]"
                       : "border-gray-500 text-gray-400"
-                  } hover:shadow-[0_0_15px_#ffffff] transition duration-300`}
+                    } hover:shadow-[0_0_15px_#ffffff] transition duration-300`}
                 >
                   {sub === "AddMoney" ? "Add Money" : "Deposit Transactions"}
                 </button>
@@ -61,25 +70,31 @@ const BalanceHomepage = () => {
             </div>
 
             {/* Sub-tab Content */}
-            {subTab === "AddMoney" && <AddMoney/>}
-            {subTab === "DepositTransactions" && <DepositTransactions/>}
+            {subTab === "AddMoney" && <AddMoney />}
+            {subTab === "DepositTransactions" && <DepositTransactions />}
           </>
         )}
 
         {activeTab === "Update Balance" && (
           <div className="bg-gray-900 p-4 rounded-lg shadow-md">
             <h3 className="text-lg font-semibold">Update Balance</h3>
-            <p>Balance update functionality coming soon.</p>
+            {/* Pass balance, user, and accounts to UpdateBalance */}
+            <UpdateBalance
+              addAccounts={accounts}  // Pass the list of account IDs
+              commissionPercentage={user.commisionPercentage}  // Dummy commission percentage
+              balance={balance}  // Pass the balance
+            />
           </div>
         )}
 
         {activeTab === "Transactions" && (
           <div className="bg-gray-900 p-4 rounded-lg shadow-md">
             <h3 className="text-lg font-semibold">All Transactions</h3>
-            <p>Transaction history functionality coming soon.</p>
+            <TransactionPage/>
           </div>
         )}
       </div>
+
       <Footer />
     </div>
   );

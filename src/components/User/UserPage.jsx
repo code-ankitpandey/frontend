@@ -61,6 +61,7 @@ const UserPage = () => {
         });
         if (accountsResponse.status === 200) {
           setAccounts(accountsResponse.data); // Assuming the response body has the accounts data
+          console.log(accountsResponse.data)
         } else {
           throw new Error('Error fetching accounts');
         }
@@ -75,6 +76,7 @@ const UserPage = () => {
         });
         if (userResponse.status === 200) {
           setUser(userResponse.data); // Assuming the response body has the user data (firstName, lastName, etc.)
+          console.log(userResponse.data)
         } else {
           throw new Error('Error fetching user data');
         }
@@ -113,7 +115,7 @@ const UserPage = () => {
       </div>
 
       <div className="flex flex-row">
-        <BalanceTile balance={balance} />
+        <BalanceTile balance={balance} user={user} accounts={accounts} />
         <AccountTile account={accounts.length} /> {/* Assuming accounts is an array */}
       </div>
       <Footer />

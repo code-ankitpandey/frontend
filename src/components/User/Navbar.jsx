@@ -4,7 +4,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Sample tabs for the navbar
-  const tabs = ["Home", "About", "Services", "Contact"];
+  const tabs = ["Facebook", "Google"];
 
   return (
     <nav className="bg-slate-600 text-white p-4 ">
@@ -18,7 +18,7 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-8">
           {tabs.map((tab, index) => (
-            <a key={index} href={`#${tab.toLowerCase()}`} className="hover:text-gray-300">
+            <a key={index} href={`${tab.toLowerCase()}`} className="hover:text-gray-300">
               {tab}
             </a>
           ))}
